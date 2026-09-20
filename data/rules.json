@@ -1,0 +1,711 @@
+{
+  "rules": [
+    {
+      "id": "auto_renewal",
+      "kategorie": "Automatische Verlängerung",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Vertrag verlängert sich automatisch, sofern nicht rechtzeitig gekündigt wird. Ohne aktives Handeln entsteht eine neue, oft lange Bindungsfrist.",
+      "muster": [
+        "verl(ä|ae)ngert sich .{0,40}(automatisch|stillschweigend)",
+        "automatische(n)? Verl(ä|ae)ngerung",
+        "sofern nicht .{0,60}gek(ü|ue)ndigt wird",
+        "(shall|will|does)\\s+automatically\\s+renew",
+        "automatically\\s+renews?\\s+(every|each)\\s+(month|year)",
+        "renews?\\s+automatically\\s+unless",
+        "auto-?renews?\\s+(for\\s+\\d+\\s+(months|years))?"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "unilateral_termination_provider",
+      "kategorie": "Einseitiges Kündigungsrecht des Anbieters",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Anbieter kann den Vertrag jederzeit oder mit sehr kurzer Frist kündigen, während der Kunde an strengere Regeln gebunden bleibt.",
+      "muster": [
+        "(der )?Anbieter (kann|ist berechtigt).{0,60}jederzeit.{0,40}k(ü|ue)ndigen",
+        "au(ß|ss)erordentliche(s)? K(ü|ue)ndigungsrecht.{0,60}Anbieter",
+        "ohne Angabe von Gr(ü|ue)nden.{0,120}k(ü|ue)ndigen",
+        "(Provider|Company)\\s+(may|is entitled to|reserves the right to)\\s+terminate.{0,60}at any time",
+        "terminate\\s+this\\s+agreement\\s+at\\s+any\\s+time\\s+without\\s+(prior\\s+)?notice"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "hidden_price_adjustment",
+      "kategorie": "Versteckte Preisanpassungsklausel",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Anbieter darf Preise einseitig und ohne klare Obergrenze anpassen, häufig ohne besonderes Widerspruchs- oder Kündigungsrecht des Kunden.",
+      "muster": [
+        "Preise?\\s+einseitig.{0,100}(anzupassen|anpassen|erh(ö|oe)hen)",
+        "beh(ä|ae)lt sich .{0,30}vor,.{0,80}Preise.{0,60}einseitig",
+        "Preisanpassung.{0,80}ohne .{0,20}Zustimmung",
+        "(fees?|prices?|charges?)\\s+may\\s+be\\s+(changed|increased|adjusted)\\s+at\\s+(the\\s+)?(Provider|Company)'s\\s+(sole\\s+)?discretion"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "liability_exclusion",
+      "kategorie": "Haftungsausschluss",
+      "schweregrad": "mittel",
+      "beschreibung": "Die Haftung des Anbieters wird weitgehend ausgeschlossen, auch für Fälle, in denen dies rechtlich kritisch sein kann.",
+      "muster": [
+        "Haftung .{0,30}(ist|wird) ausgeschlossen",
+        "keine Haftung .{0,40}(für|bei)",
+        "haftet .{0,20}nicht f(ü|ue)r",
+        "Schadensersatzanspr(ü|ue)che .{0,60}ausgeschlossen",
+        "(Provider|Company)\\s+shall\\s+not\\s+be\\s+(held\\s+)?(responsible|liable)\\s+for",
+        "shall\\s+not\\s+be\\s+liable\\s+for\\s+any\\s+(financial\\s+)?(losses|damages)",
+        "regardless\\s+of\\s+the\\s+circumstances"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "assignment_to_third_parties",
+      "kategorie": "Abtretung an Dritte ohne Zustimmung",
+      "schweregrad": "mittel",
+      "beschreibung": "Rechte und Pflichten aus dem Vertrag können ohne Zustimmung des Kunden an Dritte übertragen werden.",
+      "muster": [
+        "(Rechte und Pflichten|Vertrag).{0,150}an Dritte.{0,20}(zu )?(übertragen|abtreten)",
+        "Abtretung.{0,200}ohne .{0,20}Zustimmung",
+        "ist berechtigt,.{0,150}an (einen|Dritte).{0,20}(zu )?(übertragen|abzutreten)",
+        "(may|is entitled to)\\s+assign\\s+this\\s+agreement.{0,60}without.{0,20}consent"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "penalty_clause",
+      "kategorie": "Vertragsstrafe",
+      "schweregrad": "mittel",
+      "beschreibung": "Es wird eine Vertragsstrafe für bestimmte Pflichtverletzungen vereinbart, die unverhältnismäßig hoch ausfallen kann.",
+      "muster": [
+        "Vertragsstrafe .{0,40}(in H(ö|oe)he von|von)",
+        "pauschalierte(n)? Schadensersatz",
+        "je Verst(oß|oss) .{0,30}(EUR|€|Euro)",
+        "(penalty|liquidated damages)\\s+of\\s+(€|\\$|EUR|USD)",
+        "(recovery|compliance)\\s+fee\\s+of\\s+(€|\\$|EUR|USD)"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "jurisdiction_and_governing_law",
+      "kategorie": "Gerichtsstand / Rechtswahl zulasten des Kunden",
+      "schweregrad": "niedrig",
+      "beschreibung": "Es wird ein für den Kunden ungünstiger Gerichtsstand oder ein fremdes anwendbares Recht festgelegt.",
+      "muster": [
+        "Gerichtsstand ist .{0,40}Sitz des Anbieters",
+        "ausschlie(ß|ss)licher Gerichtsstand",
+        "es gilt .{0,20}Recht .{0,10}unter Ausschluss",
+        "exclusive\\s+jurisdiction",
+        "governing\\s+law\\s+of\\s+(the\\s+)?(Provider|Company)'s\\s+choice"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "confidentiality_one_sided",
+      "kategorie": "Einseitige Vertraulichkeitsklausel",
+      "schweregrad": "niedrig",
+      "beschreibung": "Nur eine Vertragspartei wird zur Vertraulichkeit verpflichtet, was ein Ungleichgewicht schafft.",
+      "muster": [
+        "nur der Kunde .{0,30}zur Vertraulichkeit verpflichtet",
+        "der Kunde verpflichtet sich.{0,180}Stillschweigen",
+        "Anbieter unterliegt keiner entsprechenden Verpflichtung",
+        "(Client|Customer)\\s+must\\s+not\\s+disclose"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "data_usage_broad",
+      "kategorie": "Weitreichende Datennutzung",
+      "schweregrad": "mittel",
+      "beschreibung": "Der Anbieter räumt sich sehr weitreichende Rechte zur Nutzung, Weitergabe oder Monetarisierung von Kunden- oder Nutzungsdaten ein, oft über den eigentlichen Vertragszweck hinaus.",
+      "muster": [
+        "[Dd]aten.{0,60}zu (Marketing|Werbe)zwecken.{0,80}(nutzen|verwenden|weitergegeben|monetarisiert)",
+        "Anbieter r(ä|ae)umt .{0,20}(sich )?(das )?Recht ein,.{0,80}[Dd]aten",
+        "[Dd]aten.{0,80}(weitergegeben|weiterzugeben).{0,80}(Partnerunternehmen|Dritte).{0,80}(monetarisiert|verwertet)",
+        "share.{0,40}(personal|financial|business)\\s+information\\s+with\\s+(affiliated\\s+)?partners",
+        "collect,?\\s+store,?\\s+and\\s+share\\s+personal"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "minimum_term_lock_in",
+      "kategorie": "Lange Mindestvertragslaufzeit",
+      "schweregrad": "mittel",
+      "beschreibung": "Eine Mindestlaufzeit bindet den Kunden über einen längeren Zeitraum, ohne vorzeitige Kündigungsmöglichkeit.",
+      "muster": [
+        "Mindest(vertrags)?laufzeit\\s+von\\s+(\\d{1,3}|[a-zäöüß]+)\\s+(Monaten|Jahren)",
+        "l(ä|ae)uft .{0,15}mindestens .{0,10}(zwei|drei|vier|fünf|\\d{1,3}) (Jahre|Monate)",
+        "minimum\\s+(duration|term)\\s+of\\s+\\d{1,3}\\s+(months|years)",
+        "may\\s+not\\s+terminate\\s+the\\s+agreement\\s+before\\s+the\\s+end"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "hidden_fees",
+      "kategorie": "Versteckte oder unklar ausgewiesene Zusatzkosten",
+      "schweregrad": "mittel",
+      "beschreibung": "Zusätzlich zum Hauptpreis können weitere Gebühren anfallen, deren Höhe oder Bedingungen im Text nicht klar beziffert werden. Solche Klauseln erschweren es, die tatsächlichen Gesamtkosten im Voraus einzuschätzen.",
+      "muster": [
+        "(zus(ä|ae)tzliche|weitere)\\s+Geb(ü|ue)hren?\\s+k(ö|oe)nnen\\s+anfallen",
+        "(Servicepauschale|Bearbeitungsgeb(ü|ue)hr)\\s+in\\s+(unbestimmter|variabler)\\s+H(ö|oe)he",
+        "zzgl\\.\\s+(anfallender|etwaiger|weiterer)\\s+Geb(ü|ue)hren",
+        "additional\\s+(administrative,?\\s+)?(processing,?\\s+)?(and\\s+)?(platform\\s+)?fees\\s+may\\s+be\\s+charged",
+        "fees\\s+may\\s+be\\s+charged\\s+at\\s+(the\\s+)?(Provider|Company)'s\\s+discretion",
+        "automatic\\s+charge\\s+via\\s+.{0,10}partner\\s+companies",
+        "automatische[r]?\\s+Belastung\\s+(ü|ue)ber\\s+.{0,10}Partnerunternehmen"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "vague_obligation_language",
+      "kategorie": "Unklare oder unbestimmte Verpflichtung",
+      "schweregrad": "niedrig",
+      "beschreibung": "Die Klausel räumt dem Anbieter einen weiten, nicht näher konkretisierten Ermessensspielraum ein. Für den Kunden ist dadurch schwer vorhersehbar, welche konkreten Pflichten oder Leistungen tatsächlich gelten.",
+      "muster": [
+        "nach\\s+(freiem\\s+)?Ermessen\\s+des\\s+Anbieters",
+        "in\\s+angemessenem\\s+Umfang",
+        "kann\\s+(sich\\s+)?(je\\s+nach\\s+)?(Einzelfall|Bedarf)\\s+(variieren|ändern|unterscheiden)",
+        "vorbehaltlich\\s+anderweitiger\\s+Regelung",
+        "at\\s+(the\\s+)?(Provider|Company)'s\\s+sole\\s+discretion",
+        "may\\s+be\\s+modified\\s+at\\s+any\\s+time"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "no_withdrawal_right",
+      "kategorie": "Ausschluss des Widerrufsrechts",
+      "schweregrad": "mittel",
+      "beschreibung": "Das Widerrufsrecht wird ausgeschlossen oder stark eingeschränkt. Bei Verbraucherverträgen ist dies nur in gesetzlich eng begrenzten Ausnahmefällen zulässig - ein pauschaler Ausschluss ist ein Prüfungspunkt.",
+      "muster": [
+        "(es\\s+besteht\\s+)?kein\\s+Widerrufsrecht",
+        "Widerrufsrecht\\s+(ist\\s+)?ausgeschlossen",
+        "auf\\s+(sein|ihr)\\s+Widerrufsrecht\\s+verzichtet",
+        "waives?\\s+the\\s+right\\s+to\\s+(a\\s+)?withdraw",
+        "no\\s+right\\s+of\\s+withdrawal\\s+after\\s+activation",
+        "no\\s+termination\\s+rights\\s+for\\s+the\\s+first\\s+\\d{1,3}\\s+months"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "no_refund_policy",
+      "kategorie": "Kein Rückerstattungsanspruch (Non-Refundable-Klausel)",
+      "schweregrad": "mittel",
+      "beschreibung": "Zahlungen sind unter allen Umständen von der Rückerstattung ausgeschlossen, auch wenn die Leistung nicht erbracht wird. Kombiniert mit Vorauszahlungspflichten ist dies ein erhöhtes finanzielles Risiko für den Kunden.",
+      "muster": [
+        "nicht erstattungsf(ä|ae)hig",
+        "R(ü|ue)ckerstattung .{0,20}ausgeschlossen",
+        "non-?refundable\\s+under\\s+any\\s+circumstances",
+        "strictly\\s+non-?refundable",
+        "reject\\s+refund\\s+requests\\s+without",
+        "[Kk]eine\\s+R(ü|ue)ckerstattung\\s+(m(ö|oe)glich|vorgesehen)",
+        "no\\s+refunds?\\s+(possible|of\\s+fees)",
+        "[Kk]eine\\s+R(ü|ue)ckerstattung\\s+der\\s+Geb(ü|ue)hren"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "burden_of_proof_shift",
+      "kategorie": "Beweislastumkehr zulasten des Kunden",
+      "schweregrad": "mittel",
+      "beschreibung": "Die Beweislast für einen Sachverhalt wird dem Kunden auferlegt, obwohl dieser typischerweise nur schwer Zugang zu den relevanten Nachweisen hat. Das erschwert die Durchsetzung berechtigter Ansprüche erheblich.",
+      "muster": [
+        "Beweislast .{0,20}(liegt|tr(ä|ae)gt) .{0,10}bei(m)? Kunden",
+        "burden\\s+of\\s+proof\\s+(lies|rests)\\s+with\\s+the\\s+(client|customer)"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "unilateral_contract_modification",
+      "kategorie": "Einseitige Vertragsänderung ohne Zustimmung",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Anbieter kann wesentliche Vertragsinhalte (Leistungsumfang, Bedingungen) jederzeit einseitig ändern, ohne dass der Kunde zustimmen muss. Dies untergräbt die Verbindlichkeit des ursprünglich vereinbarten Vertrags.",
+      "muster": [
+        "Leistungsumfang .{0,30}jederzeit einseitig .{0,20}(anzupassen|anpassen|(zu )?ändern|reduzieren)",
+        "Anbieter (kann|ist berechtigt).{0,40}Vertrag(sbedingungen)? .{0,40}jederzeit .{0,40}ohne Zustimmung",
+        "modify\\s+the\\s+terms\\s+and\\s+conditions.{0,40}at\\s+any\\s+time\\s+without\\s+(obtaining\\s+)?.{0,10}consent",
+        "may\\s+change\\s+these\\s+terms\\s+at\\s+any\\s+time\\s+without\\s+(prior\\s+)?notice"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "suspicious_payment_method",
+      "kategorie": "Ungewöhnliche/verdächtige Zahlungsmethode",
+      "schweregrad": "hoch",
+      "beschreibung": "Es wird eine Zahlungsmethode verlangt, die für seriöse Geschäftsbeziehungen unüblich ist und typischerweise bei Betrugsmaschen verwendet wird, weil sie kaum rückverfolgbar oder rückholbar ist (Kryptowährung, Gutscheinkarten, Bargeldversand, Zahlungsdienste ohne Käuferschutz).",
+      "muster": [
+        "Zahlung.{0,60}(in|per|mittels|via)\\s+(Kryptow(ä|ae)hrung|Bitcoin|BTC|Ethereum|USDT)",
+        "Zahlung.{0,60}(per|mittels|via|in Form von)\\s+(Gutscheinkarte[n]?|Geschenkkarte[n]?|Prepaid-?Karte[n]?)",
+        "Zahlung.{0,60}(per|mittels|via)\\s+(Western Union|MoneyGram|Bargeldtransfer)",
+        "Bargeld.{0,40}(per Post|per Kurier|zusenden)",
+        "(cryptocurrency|crypto)\\s+transfer",
+        "\\b(USDT|TRC20|BTC|ETH|wallet address)\\b",
+        "payment\\s+method[:\\s]+cryptocurrency",
+        "send\\s+(payment\\s+)?(via|through|using)\\s+(Western Union|MoneyGram|gift cards?)",
+        "\\bgift\\s?cards?\\b",
+        "(Google\\s?Play|iTunes|Steam|Amazon)[- ]?(Karte|card|Gutschein|voucher)",
+        "Konto\\s+(im\\s+Ausland|in\\s+einem\\s+Drittland|einer\\s+Privatperson)",
+        "account\\s+(in\\s+a\\s+third\\s+country|held\\s+by\\s+a\\s+private\\s+individual)",
+        "foreign\\s+account\\s+held\\s+by"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "advance_fee_pattern",
+      "kategorie": "Vorschussgebühr / Vorkasse ohne Absicherung (typisches Betrugsmuster)",
+      "schweregrad": "hoch",
+      "beschreibung": "Vor Erbringung der eigentlichen Leistung (z. B. Auszahlung eines Gewinns, Kredits, einer Erbschaft oder einer Investitionsrendite) wird eine Vorabgebühr verlangt. Dieses Muster ist charakteristisch für Vorschussbetrug ('Advance-Fee Fraud').",
+      "muster": [
+        "(Bearbeitungsgeb(ü|ue)hr|Vorabgeb(ü|ue)hr|Freischaltungsgeb(ü|ue)hr).{0,80}(vor|bevor).{0,40}(Auszahlung|Überweisung|Gewinn|Auszahlen)",
+        "um (den|Ihren) (Gewinn|Kredit|Betrag) (zu erhalten|ausgezahlt zu bekommen).{0,80}(vorab|zunächst|zuerst).{0,40}(überweisen|zahlen|einzahlen)",
+        "(Notargeb(ü|ue)hr|Transfergeb(ü|ue)hr).{0,60}vorab.{0,40}(zu )?(überweisen|entrichten)",
+        "(international\\s+)?clearance\\s+charge\\s+of\\s+(up\\s+to\\s+)?(€|\\$|EUR|USD)",
+        "(pay|transfer).{0,20}(an\\s+)?(additional\\s+)?charge.{0,30}before\\s+(withdrawal|funds\\s+are\\s+released|the\\s+funds?\\s+(is|are)\\s+released)",
+        "before\\s+withdrawal,?\\s+the\\s+(Provider|Company)\\s+may\\s+request",
+        "registration\\s+fee\\s+of\\s+(€|\\$|EUR|USD)\\s*[\\d.,]+\\s+immediately\\s+upon\\s+signing",
+        "KYC-?Geb(ü|ue)hr",
+        "KYC\\s+fee",
+        "(Versicherungspr(ä|ae)mie|Freischaltgeb(ü|ue)hr|Aktivierungsgeb(ü|ue)hr)\\s*:?\\s*[\\d.,]+\\s*(EUR|€)",
+        "(insurance\\s+premium|activation\\s+fee)\\s*:?\\s*[\\d.,]+\\s*(EUR|€|\\$|USD)",
+        "(Steuerzertifikat|Kuriergeb(ü|ue)hr|Notarkosten|Anti-?Terror-?Zertifikat)\\s*:?\\s*[\\d.,]+",
+        "(tax\\s+certificate|courier\\s+fee|anti-?terror\\s+certificate|lawyer\\s+fees|court\\s+fee)\\s*:?\\s*[\\d.,]+",
+        "(Reservierungsgeb(ü|ue)hr|reservation\\s+fee)",
+        "vor\\s+(Auszahlung|(der\\s+)?Disbursement|Vertragsbeginn)\\s+zu\\s+zahlen",
+        "pay\\s+before\\s+(disbursement|the\\s+loan\\s+is\\s+transferred|funds?\\s+are\\s+released)",
+        "(Arbeitsmittel|Laptop|Trainingsgeb(ü|ue)hr).{0,40}(vorab|vor\\s+(Beginn|Arbeitsantritt))\\s*(zu\\s+)?(zahlen|bezahlen)",
+        "(work\\s+equipment|training\\s+fee|background\\s+check)\\s*:?\\s*[\\d.,]+\\s*(EUR|€|\\$|USD).{0,80}(required\\s+before\\s+starting|before\\s+you\\s+start)",
+        "documents?\\s+will\\s+only\\s+be\\s+sent\\s+after\\s+payment",
+        "Unterlagen\\s+werden\\s+erst\\s+nach\\s+(Zahlungseingang|Zahlung)\\s+(versendet|zugesandt)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "urgency_pressure_language",
+      "kategorie": "Verdächtige Drucksprache / künstliche Dringlichkeit",
+      "schweregrad": "mittel",
+      "beschreibung": "Der Text erzeugt künstlichen Zeitdruck oder droht mit Konsequenzen, um eine übereilte Entscheidung ohne ausreichende Prüfung zu erzwingen - eine verbreitete Taktik bei Betrugsversuchen, kommt aber auch in aggressiven, aber legitimen Mahnungen vor.",
+      "muster": [
+        "(nur|noch)\\s+(heute|24 Stunden|wenige Stunden)\\s+g(ü|ue)ltig",
+        "andernfalls\\s+(verlieren Sie|erlischt|droht)",
+        "sofortige[s]?\\s+Handeln\\s+erforderlich",
+        "letzte[s]?\\s+(Mahnung|Warnung).{0,60}(rechtliche Schritte|Inkasso|Klage)",
+        "within\\s+24\\s+hours\\s+of\\s+(signing|receiving)",
+        "failure\\s+to\\s+(make|act).{0,40}(may\\s+result\\s+in|will\\s+result\\s+in)",
+        "(matter|as\\s+a\\s+matter)\\s+of\\s+urgency",
+        "waiv(e|ing)\\s+your\\s+right\\s+to",
+        "must\\s+transfer.{0,30}within\\s+\\d+\\s+hours",
+        "innerhalb\\s+von\\s+\\d{1,3}\\s+Stunden",
+        "within\\s+\\d{1,3}\\s+hours",
+        "only\\s+(possible\\s+)?until\\s+(midnight|tonight|today)",
+        "nur\\s+(möglich\\s+)?bis\\s+(Mitternacht|heute\\s+Abend)",
+        "(cancels?|verf(ä|ae)llt)\\s+(the\\s+prize\\s+)?automatisch",
+        "failure\\s+to\\s+pay\\s+cancels",
+        "bei\\s+Nichtzahlung\\s+verf(ä|ae)llt"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "sensitive_data_request",
+      "kategorie": "Aufforderung zur Herausgabe sensibler Daten",
+      "schweregrad": "hoch",
+      "beschreibung": "Es wird verlangt, sensible Zugangs- oder Identitätsdaten (TAN, PIN, vollständige Kontodaten, Ausweiskopie, Bankdaten) auf unsicherem Weg (z. B. per E-Mail) zu übermitteln. Seriöse Anbieter fragen solche Daten in der Regel nicht auf diesem Weg ab.",
+      "muster": [
+        "(TAN|PIN)\\s+(per\\s+E-?Mail|per\\s+Mail|per\\s+SMS an uns|mitteilen)",
+        "senden Sie.{0,40}(eine\\s+)?Kopie (Ihres|des) (Personalausweises|Reisepasses).{0,40}(per\\s+E-?Mail|zu)",
+        "(Kontodaten|Zugangsdaten|Passwort).{0,40}per\\s+E-?Mail\\s+(mitteilen|senden|übermitteln)",
+        "copies\\s+of\\s+identification\\s+documents",
+        "(proof\\s+of\\s+address|banking\\s+credentials)",
+        "send\\s+(a\\s+)?screenshot\\s+and\\s+transaction\\s+hash",
+        "request\\s+copies\\s+of\\s+identification"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "unrealistic_return_promise",
+      "kategorie": "Unrealistisches Rendite-/Gewinnversprechen (Betrugsindiz)",
+      "schweregrad": "hoch",
+      "beschreibung": "Es wird eine garantierte, risikofreie oder ungewöhnlich hohe Rendite bzw. ein Gewinn versprochen. Seriöse Kapitalanlagen sind grundsätzlich nie vollständig risikofrei - solche Formulierungen sind ein klassisches Warnsignal für Anlagebetrug.",
+      "muster": [
+        "garantierte[r]?\\s+(Rendite|Gewinn|Ertrag)",
+        "(100\\s?%|hundertprozentig)\\s+(sicher|risikofrei)e[r]?\\s+(Anlage|Investition|Rendite)",
+        "risikofreie[r]?\\s+(Gewinn|Rendite|Investition)",
+        "guarantee[sd]?\\s+(a\\s+)?return\\s+of",
+        "risk-free.{0,20}(return|investment|guarantee)",
+        "regardless\\s+of\\s+market\\s+conditions",
+        "legally\\s+secured\\s+by\\s+international",
+        "(increase|grow)\\s+.{0,30}(revenue|profit)\\s+by\\s+up\\s+to\\s+\\d{2,4}\\s?%",
+        "return\\s+of\\s+(€|\\$|EUR|USD)\\s*[\\d,.]+\\s+within\\s+\\d+\\s+(calendar\\s+)?days",
+        "garantierte\\s+\\d{1,3}\\s?%\\s*(Rendite|Gewinn)?",
+        "guarantee[sd]?\\s+(a\\s+)?\\d{1,3}\\s?%\\s+return",
+        "risikofrei\\s+und\\s+steuerfrei",
+        "risk-?free\\s+and\\s+tax-?free",
+        "steuerfreie[r]?\\s+(Rendite|Gewinn|Ertrag)",
+        "tax-?free\\s+(return|profit|gains?)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "authority_impersonation_pressure",
+      "kategorie": "Verdächtiger Autoritätsbezug / Drohkulisse",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Text beruft sich auf eine Behörde, ein Gericht oder eine offizielle Stelle und droht mit Konsequenzen, um Druck aufzubauen. Diese Taktik wird häufig bei Betrugsversuchen (z. B. gefälschte Inkasso- oder Behördenschreiben) eingesetzt und sollte im Zweifel unabhängig verifiziert werden.",
+      "muster": [
+        "im\\s+Namen\\s+(der\\s+)?(Staatsanwaltschaft|Polizei|Beh(ö|oe)rde|Gericht)",
+        "andernfalls\\s+(erfolgt|droht)\\s+(eine\\s+)?(polizeiliche|strafrechtliche)\\s+(Ermittlung|Anzeige)",
+        "zur\\s+Vermeidung\\s+(eines\\s+)?(Gerichtsverfahrens|einer\\s+Strafanzeige)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "negative_option_billing",
+      "kategorie": "Automatische Kostenpflicht durch Schweigen (Opt-Out-Falle)",
+      "schweregrad": "hoch",
+      "beschreibung": "Eine kostenpflichtige Zusatzleistung wird automatisch aktiviert, sofern der Kunde nicht aktiv und innerhalb einer kurzen Frist widerspricht. Diese \"negative option billing\"-Taktik verlagert die Beweis- und Handlungslast unfair auf den Kunden und wird häufig genutzt, um zusätzliche Kosten unbemerkt unterzubringen.",
+      "muster": [
+        "sofern .{0,20}(der )?Kunde .{0,80}nicht .{0,60}(Stunden|Tagen) .{0,80}widerspricht",
+        "erm(ä|ae)chtigt .{0,40}zur Aktivierung .{0,80}sofern .{0,60}nicht.{0,60}(Stunden|Tagen).{0,60}widerspricht",
+        "unless\\s+(the\\s+)?(client|customer)\\s+objects?.{0,40}within\\s+\\d+\\s+(hours|days)",
+        "deemed\\s+(to\\s+have\\s+been\\s+)?accepted\\s+(unless|if\\s+not)",
+        "automatically\\s+activated\\s+unless\\s+you\\s+(object|opt.?out)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "isolation_from_third_parties",
+      "kategorie": "Aufforderung, keine Dritten/Behörden/Banken zu kontaktieren",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Text fordert den Empfänger explizit auf, vor einer Zahlung oder Entscheidung KEINE unabhängigen Dritten (Bank, Berater, Behörde, Regulierungsstelle) zu kontaktieren. Diese Isolationstaktik ist eines der zuverlässigsten Warnsignale für Betrug, da seriöse Anbieter eine unabhängige Prüfung nicht verhindern wollen.",
+      "muster": [
+        "not\\s+to\\s+contact\\s+(external\\s+)?(financial\\s+advisers|banks|regulators|third\\s+parties)",
+        "(advised|instructed)\\s+not\\s+to\\s+contact",
+        "may\\s+delay\\s+processing\\s+and\\s+invalidate\\s+the\\s+offer",
+        "kontaktieren\\s+Sie\\s+(bitte\\s+)?keine\\s+(Bank|Beh(ö|oe)rde|Berater|Dritten)",
+        "wenden\\s+Sie\\s+sich\\s+(bitte\\s+)?nicht\\s+an\\s+(eine\\s+)?(Bank|Beh(ö|oe)rde)",
+        "waives?\\s+the\\s+right\\s+to\\s+pursue\\s+claims\\s+through\\s+ordinary\\s+courts",
+        "consumer.protection\\s+agencies,?\\s+or\\s+financial\\s+regulators",
+        "contacting\\s+(authorities|the\\s+police|a\\s+lawyer).{0,50}(results?\\s+in|will\\s+result\\s+in).{0,40}(loss|forfeiture|cancellation)",
+        "Kontaktaufnahme\\s+mit\\s+Beh(ö|oe)rden.{0,50}(f(ü|ue)hrt\\s+zu|hat\\s+zur\\s+Folge)",
+        "do\\s+not\\s+share\\b",
+        "(bitte\\s+)?nicht\\s+weitergeben\\b",
+        "vertraulich\\s+ausgew(ä|ae)hlt",
+        "confidentially\\s+selected"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "post_signing_unilateral_jurisdiction",
+      "kategorie": "Gerichtsstand/Recht wird erst nach Vertragsschluss vom Anbieter bestimmt",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Anbieter behält sich vor, das anwendbare Recht oder den Gerichtsstand erst NACH Vertragsschluss einseitig festzulegen. Dadurch weiß der Kunde beim Unterzeichnen nicht, welche Rechtsordnung überhaupt gilt - ein gravierendes Ungleichgewicht, das seriöse Verträge grundsätzlich nicht enthalten.",
+      "muster": [
+        "(Provider|Company)\\s+may\\s+select\\s+the\\s+applicable\\s+jurisdiction.{0,60}after.{0,30}(the\\s+)?agreement.{0,30}(has\\s+been\\s+)?signed",
+        "Gerichtsstand .{0,40}erst nach .{0,20}Vertragsschluss .{0,30}(fest|bestimmt)",
+        "governing\\s+law.{0,40}determined\\s+by\\s+the\\s+(Provider|Company).{0,40}after\\s+signing"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "recovery_scam_vocabulary",
+      "kategorie": "Typisches Vokabular von Rückgewinnungs-/Anlagebetrug (\"Recovery Scam\")",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Text verwendet Begriffe, die typisch für sogenannte \"Recovery Scams\" sind: vorgebliche Verwalter/Insolvenzverfahren, Treuhand-/Escrow-Konten, Ansprüche/Claims-Formulare oder \"besicherte Garantien\", mit denen Opfern früherer Betrugsfälle vorgetäuscht wird, ihr verlorenes Geld gegen eine weitere Zahlung zurückzuerhalten.",
+      "muster": [
+        "escrow\\s+(discharge|account|statement)",
+        "underwritten\\s+guarantee",
+        "voluntary\\s+administration",
+        "claims?\\s+form",
+        "personal\\s+settlement\\s+(claim|figure)",
+        "programme\\s+availability\\s*:?\\s*\\d{1,3}\\s?%",
+        "administrators?\\s+(of|have been appointed)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "offshore_jurisdiction",
+      "kategorie": "Anwendbares Recht/Gerichtsstand in bekannter Offshore-/Geheimhaltungsjurisdiktion",
+      "schweregrad": "mittel",
+      "beschreibung": "Als anwendbares Recht oder Gerichtsstand wird eine für Briefkastenfirmen und Steuer-/Regulierungsflucht bekannte Jurisdiktion festgelegt. Das ist nicht automatisch illegal, erschwert aber im Streitfall die Rechtsdurchsetzung erheblich und tritt in Betrugsfällen überdurchschnittlich häufig auf - sollte im Kontext der übrigen Klauseln bewertet werden.",
+      "muster": [
+        "Recht der (Republik )?(Seychellen|Marshallinseln|Vanuatu)",
+        "laws?\\s+of\\s+(the\\s+)?(Seychelles|Belize|Marshall\\s+Islands|Panama|Cayman\\s+Islands|British\\s+Virgin\\s+Islands|Vanuatu)",
+        "jurisdiction\\s+of\\s+(the\\s+)?(Seychelles|Belize|Marshall\\s+Islands|Cayman\\s+Islands|British\\s+Virgin\\s+Islands)",
+        "Gerichtsstand .{0,20}(Seychellen|Belize|Marshallinseln|Panama|Cayman-?Inseln|Vanuatu)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "scarcity_manipulation",
+      "kategorie": "Künstliche Verknappung als Druckmittel",
+      "schweregrad": "niedrig",
+      "beschreibung": "Der Text suggeriert eine begrenzte Verfügbarkeit ('nur noch X% Plätze', 'begrenztes Kontingent'), um eine schnelle, unüberlegte Entscheidung zu provozieren. Für sich genommen ein schwaches Signal, in Kombination mit anderen Auffälligkeiten aber ein typisches Verkaufsdruck-/Betrugsmuster.",
+      "muster": [
+        "only\\s+\\d+\\s+(spots|places|slots)\\s+(left|remaining|available)",
+        "limited\\s+availability",
+        "nur noch \\d+\\s?(Pl(ä|ae)tze|Kontingent|verf(ü|ue)gbar)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "irrevocable_consent",
+      "kategorie": "Unwiderrufliche Einwilligung (datenschutzrechtlich unzulässig)",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Text erklärt eine erteilte Einwilligung (z. B. zur Datennutzung) für nicht widerrufbar. Nach geltendem Datenschutzrecht (u. a. DSGVO) muss eine Einwilligung jedoch jederzeit widerrufbar sein - eine als unwiderruflich bezeichnete Klausel ist entweder rechtlich unwirksam oder ein Hinweis auf mangelnde Seriosität des Anbieters.",
+      "muster": [
+        "Einwilligung kann nicht widerrufen werden",
+        "diese Zustimmung ist unwiderruflich",
+        "consent\\s+(cannot|may not)\\s+be\\s+(withdrawn|revoked)",
+        "this\\s+consent\\s+is\\s+irrevocable"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "unsolicited_prize_notification",
+      "kategorie": "Unaufgeforderte Gewinn-/Lotteriebenachrichtigung",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Empfänger wird als Gewinner eines Preises oder einer Lotterie benannt, an der er nachweislich nicht teilgenommen hat. Dieses klassische 'Advance-Fee'-Betrugsmuster nutzt die Aussicht auf einen großen Gewinn, um anschließend Vorabgebühren zu erpressen.",
+      "muster": [
+        "(wurde|sind Sie)\\s+als\\s+(Gewinner|Hauptgewinner)\\s+ausgew(ä|ae)hlt",
+        "selected\\s+as\\s+(the\\s+)?(grand\\s+prize\\s+)?winner",
+        "(internationale[n]?\\s+Ziehung|international\\s+draw)",
+        "Prize\\s+(amount|Coordinator)",
+        "Gewinnsumme\\s*:"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "unsolicited_inheritance_notification",
+      "kategorie": "Unaufgeforderte Erbschaftsbenachrichtigung",
+      "schweregrad": "hoch",
+      "beschreibung": "Dem Empfänger wird eine hohe Erbschaft von einer unbekannten, verstorbenen Person in Aussicht gestellt. Dieses Muster ('Erbschaftsbetrug') nutzt emotionale Überraschung und finanzielle Aussicht, um Vorabzahlungen für angebliche Gebühren zu erwirken.",
+      "muster": [
+        "(awarded|erhalten)\\s+(an\\s+)?(inheritance|Erbschaft)\\s+(of|von|in\\s+H(ö|oe)he\\s+von)",
+        "the\\s+deceased\\s+named\\s+you\\s+personally",
+        "Der\\s+Verstorbene\\s+hat\\s+Sie\\s+pers(ö|oe)nlich",
+        "Barrister\\s+\\w+.{0,30}(email\\s+only|nur\\s+per\\s+E-?Mail)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "unregulated_or_unaudited_investment",
+      "kategorie": "Unregulierte Plattform / verweigerte Transparenz",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Anbieter räumt selbst ein, keiner Regulierung/Aufsicht zu unterliegen, oder verweigert explizit eine unabhängige Prüfung (Audit) der eigenen Geschäftstätigkeit. Seriöse Finanzdienstleister unterliegen einer Aufsicht und lassen sich prüfen - eine offene Verweigerung ist ein starkes Warnsignal.",
+      "muster": [
+        "\\(nicht\\s+reguliert\\)",
+        "\\(unregulated\\)",
+        "Audit\\s+ist\\s+(aus\\s+Sicherheitsgr(ü|ue)nden\\s+)?nicht\\s+m(ö|oe)glich",
+        "an?\\s+audit\\s+is\\s+not\\s+possible",
+        "kein(e)?\\s+(Jahresbericht|Generalversammlung|Hauptversammlung)",
+        "no\\s+(general\\s+meeting|annual\\s+reports?)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "contact_only_via_messaging_app",
+      "kategorie": "Kontaktaufnahme ausschließlich über Messenger-App",
+      "schweregrad": "mittel",
+      "beschreibung": "Der Anbieter ist ausschließlich über einen Messenger-Dienst (Telegram, WhatsApp) erreichbar, nicht über Telefon, offizielle E-Mail-Adresse oder Geschäftsadresse. Seriöse Unternehmen bieten in der Regel mehrere, nachvollziehbare Kontaktwege - ein reiner Messenger-Kontakt erschwert die Rückverfolgbarkeit erheblich.",
+      "muster": [
+        "nur\\s+per\\s+(Telegram|WhatsApp)\\s+erreichbar",
+        "(Kontakt|Support)\\s*:?\\s*nur\\s+(per\\s+)?(WhatsApp|Telegram)",
+        "reachable\\s+only\\s+via\\s+Telegram",
+        "Contact\\s*:?\\s*WhatsApp\\s+(or\\s+Telegram\\s+)?only",
+        "\\(WhatsApp\\s+only\\)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "unregistered_entity_admission",
+      "kategorie": "Eingeständnis fehlender Registrierung/Zulassung",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Text räumt selbst ein, dass der Anbieter, Verein oder Kreditgeber nirgends offiziell registriert oder zugelassen ist. Diese offene Angabe ist ein direktes, gut belegbares Warnsignal, da seriöse Geschäftspartner in aller Regel im Handelsregister oder einem vergleichbaren Register eingetragen sind.",
+      "muster": [
+        "(Verein|Unternehmen)\\s+nicht\\s+registriert",
+        "nicht\\s+in\\s+der\\s+EU\\s+registriert",
+        "not\\s+registered\\s+(anywhere|in\\s+the\\s+EU)",
+        "[Ll]ender\\s+not\\s+registered",
+        "Kreditgeber\\s+nicht\\s+(in\\s+der\\s+EU\\s+)?registriert"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "payment_to_private_or_foreign_account",
+      "kategorie": "Zahlung auf Privat- oder Drittlandkonto",
+      "schweregrad": "hoch",
+      "beschreibung": "Zahlungen sollen auf das Konto einer Privatperson oder auf ein Konto in einem Drittland erfolgen, statt auf ein nachvollziehbares Geschäftskonto des Vertragspartners. Dies erschwert die Rückverfolgung und Rückforderung erheblich und ist ein verbreitetes Muster bei Miet- und Anlagebetrug.",
+      "muster": [
+        "Konto\\s+(im\\s+Ausland|in\\s+einem\\s+Drittland)\\s+(einer\\s+)?Privatperson",
+        "foreign\\s+account\\s+held\\s+by\\s+a\\s+private\\s+individual",
+        "Zahlung\\s+.{0,30}an\\s+ein\\s+Konto\\s+in\\s+einem\\s+Drittland",
+        "payment\\s+.{0,30}to\\s+an\\s+account\\s+in\\s+a\\s+third\\s+country"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "incomplete_provider_information",
+      "kategorie": "Unvollständige oder fehlende Anbieterangaben",
+      "schweregrad": "mittel",
+      "beschreibung": "Wesentliche Pflichtangaben zum Anbieter (Adresse, vollständiges Impressum) fehlen oder werden als unvollständig bezeichnet. Nach deutschem und EU-Recht sind Anbieterangaben (Impressumspflicht) grundsätzlich verpflichtend - ihr Fehlen erschwert es, den Vertragspartner im Streitfall zu identifizieren oder zu belangen.",
+      "muster": [
+        "\\(Impressum\\s+unvollst(ä|ae)ndig\\)",
+        "\\(imprint\\s+incomplete\\)",
+        "\\(address\\s+not\\s+provided\\)",
+        "\\(Adresse\\s+nicht\\s+angegeben\\)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "data_extortion_threat",
+      "kategorie": "Erpressung mit angeblich gespeicherten Daten",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Text droht damit, angeblich bereits erlangte private Daten (Kontakte, Fotos, sonstige Informationen) zu veröffentlichen, sofern nicht gezahlt wird. Dies ist eine klassische Erpressungstaktik (häufig verbunden mit fingierten 'Tech-Support'- oder 'Sextortion'-Maschen) und ein besonders gravierendes Warnsignal.",
+      "muster": [
+        "(Ihre\\s+)?Daten\\s+werden\\s+(sonst\\s+)?ver(ö|oe)ffentlicht",
+        "(your\\s+)?data\\s+will\\s+be\\s+published",
+        "[Ww]ir\\s+haben\\s+(Ihre\\s+)?(Kontakte|Fotos)\\s+gespeichert",
+        "[Ww]e\\s+have\\s+stored\\s+your\\s+(contacts|photos)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "fake_virus_alert_remote_access",
+      "kategorie": "Vorgetäuschte Vireninfektion mit Fernzugriffs-Anspruch",
+      "schweregrad": "hoch",
+      "beschreibung": "Der Text behauptet unaufgefordert, das Gerät des Empfängers sei mit Schadsoftware infiziert, und beansprucht bereits bestehenden Fernzugriff auf das System. Dies ist das Kernmuster klassischer 'Tech-Support-Scams' - seriöse Sicherheitswarnungen erfolgen nicht auf diesem Weg und beanspruchen keinen vorherigen Systemzugriff.",
+      "muster": [
+        "Computer\\s+(wurde\\s+)?(mit\\s+)?\\d+\\s+Viren\\s+infiziert",
+        "infected\\s+with\\s+\\d+\\s+viruses",
+        "[Ww]ir\\s+haben\\s+Zugriff\\s+auf\\s+Ihr\\s+System",
+        "[Ww]e\\s+have\\s+access\\s+to\\s+your\\s+system"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "unrealistic_loan_terms",
+      "kategorie": "Unrealistische Kreditkonditionen ohne Bonitätsprüfung",
+      "schweregrad": "hoch",
+      "beschreibung": "Ein Kredit wird ohne jegliche Bonitätsprüfung und zu einem unrealistisch niedrigen Zinssatz angeboten. Seriöse Kreditgeber sind gesetzlich zur Kreditwürdigkeitsprüfung verpflichtet - das bewusste Fehlen einer solchen Prüfung in Kombination mit einem Kampfzins ist ein typisches Kreditbetrugs-Lockmittel, dem meist Vorabgebühren folgen.",
+      "muster": [
+        "keine\\s+Bonit(ä|ae)tspr(ü|ue)fung.{0,30}keine\\s+Schufa",
+        "no\\s+credit\\s+check",
+        "ohne\\s+Schufa",
+        "Zinssatz\\s*:?\\s*0[.,]\\d\\s?%.{0,60}keine\\s+Bonit(ä|ae)tspr(ü|ue)fung"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "unrealistic_salary_for_minimal_effort",
+      "kategorie": "Unrealistisch hohes Gehalt für minimalen Aufwand",
+      "schweregrad": "hoch",
+      "beschreibung": "Es wird ein überdurchschnittlich hohes Gehalt für einen sehr geringen zeitlichen Arbeitsaufwand versprochen. Diese Diskrepanz zwischen Vergütung und Arbeitsaufwand ist ein verbreitetes Lockmittel bei Stellenbetrug ('Job Scam'), dem häufig Vorabzahlungsforderungen für Arbeitsmittel oder Schulungen folgen.",
+      "muster": [
+        "[\\d.,]+\\s?(EUR|€|\\$|USD)\\s?/\\s?(Monat|month).{0,40}(für|for)\\s+\\d\\s+(Stunden|hours)\\s+(t(ä|ae)glich|daily)"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "landlord_unavailable_payment_before_viewing",
+      "kategorie": "Vermieter unerreichbar / Zahlung vor Besichtigung verlangt",
+      "schweregrad": "hoch",
+      "beschreibung": "Der angebliche Vermieter befindet sich im Ausland, kann die Wohnung nicht persönlich zeigen und verlangt eine Zahlung, bevor überhaupt eine Besichtigung oder Schlüsselübergabe stattfindet. Dieses Muster ist charakteristisch für Mietbetrug, bei dem für nicht existierende oder nicht verfügbare Wohnungen kassiert wird.",
+      "muster": [
+        "Vermieter\\s+(befindet\\s+sich\\s+)?im\\s+Ausland.{0,60}(nicht\\s+besichtigen|kann\\s+die\\s+Wohnung\\s+nicht)",
+        "landlord\\s+is\\s+abroad.{0,60}cannot\\s+show\\s+the\\s+apartment",
+        "Besichtigung\\s+erst\\s+nach\\s+Zahlung(seingang)?\\s+m(ö|oe)glich",
+        "viewing\\s+only\\s+possible\\s+after\\s+payment",
+        "Schl(ü|ue)sselübergabe\\s+erst\\s+nach\\s+Zahlung",
+        "keys?\\s+handed\\s+over\\s+only\\s+after\\s+payment"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "difficult_cancellation_channel",
+      "kategorie": "Erschwerter Kündigungsweg über Auslandsadresse",
+      "schweregrad": "mittel",
+      "beschreibung": "Eine Kündigung ist ausschließlich per Einschreiben an eine ausländische Adresse möglich, während der Vertragsschluss selbst online und unkompliziert erfolgte. Dieses bewusste Ungleichgewicht zwischen einfachem Vertragsschluss und erschwerter Kündigung ist ein verbreitetes 'Dark Pattern' bei Abo-Fallen.",
+      "muster": [
+        "K(ü|ue)ndigung\\s+nur\\s+(durch|per)\\s+(einen\\s+)?eingeschriebenen\\s+Brief.{0,40}(Ausland|Zypern|Malta)",
+        "cancellation\\s+only\\s+by\\s+registered\\s+letter\\s+to\\s+an\\s+address\\s+in"
+      ],
+      "aktiv": true,
+      "typ": "vertragsklausel"
+    },
+    {
+      "id": "below_market_price_bait",
+      "kategorie": "Auffällig günstiges Angebot als Lockmittel",
+      "schweregrad": "mittel",
+      "beschreibung": "Der Preis wird selbst als deutlich unter dem marktüblichen Niveau beschrieben. In Kombination mit anderen Auffälligkeiten (Vorauszahlung, fehlende Besichtigung) ist ein ungewöhnlich günstiges Angebot ein verbreitetes Lockmittel, um Interessenten schnell zu einer Zahlung zu bewegen, bevor Zweifel aufkommen.",
+      "muster": [
+        "(deutlich|weit)\\s+unter\\s+(dem\\s+)?Marktwert",
+        "far\\s+below\\s+market\\s+value"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "conditional_reimbursement_promise",
+      "kategorie": "Bedingte Kostenerstattung erst nach Zahlung/Beschäftigungsbeginn",
+      "schweregrad": "mittel",
+      "beschreibung": "Vom Kunden oder Bewerber vorab verauslagte Kosten sollen angeblich zu einem späteren Zeitpunkt erstattet werden (z. B. nach der ersten Gehaltszahlung). Diese Konstruktion verlagert das volle Ausfallrisiko auf die vorleistende Person und wird häufig genutzt, um Vorabzahlungen plausibel erscheinen zu lassen, ohne dass eine Rückzahlung tatsächlich erfolgt.",
+      "muster": [
+        "(werden|wird)\\s+.{0,20}erstattet.{0,20}nach\\s+der\\s+ersten\\s+(Gehalts|Lohn)zahlung",
+        "reimbursed\\s+after\\s+the\\s+first\\s+salary\\s+payment",
+        "costs?\\s+will\\s+be\\s+.{0,10}reimbursed\\s+after"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    },
+    {
+      "id": "payment_before_service_or_goods",
+      "kategorie": "Vorauszahlung ohne jede Absicherung des Kunden",
+      "schweregrad": "hoch",
+      "beschreibung": "Die vollständige Zahlung wird verlangt, bevor irgendeine Gegenleistung (Ware, Dienstleistung, Zugang, Dokument) erbracht wird - ohne Treuhandlösung, Ratenzahlung oder sonstige Absicherung für den Kunden. Dieses grundlegende Ungleichgewicht zwischen Vorleistung und Risiko ist ein Kernmerkmal fast aller Vorschussbetrugsformen.",
+      "muster": [
+        "Unterlagen\\s+werden\\s+erst\\s+nach\\s+Zahlung(seingang)?\\s+(versendet|zugesandt)",
+        "documents?\\s+will\\s+only\\s+be\\s+sent\\s+after\\s+payment\\s+is\\s+received"
+      ],
+      "aktiv": true,
+      "typ": "betrug"
+    }
+  ]
+}

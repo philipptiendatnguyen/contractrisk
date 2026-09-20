@@ -1,0 +1,29 @@
+matplotlib>=3.8,<4.0
+
+# Dokumenten-Import (siehe contractrisk/io_utils/document_parsers.py)
+pypdf>=5.0,<6.0
+python-docx>=1.1,<2.0
+openpyxl>=3.1,<4.0
+python-pptx>=1.0,<2.0
+odfpy>=1.4,<2.0
+
+# Hinweis: Das alte binäre .doc- und .xls-Format werden bewusst NICHT
+# unterstützt (siehe config.KNOWN_UNSUPPORTED_EXTENSIONS) - hierfür gibt
+# es keine zuverlässige, reine Python-Bibliothek ohne Systemabhängigkeiten.
+# Die Anwendung informiert den Nutzer beim Import klar über Alternativen
+# (Konvertierung in .docx/.xlsx).
+
+# --- Optional: OCR-Fallback für gescannte PDFs ohne Textebene ------------
+# Diese beiden Pakete sind OPTIONAL. Sind sie nicht installiert, funktioniert
+# die Anwendung unverändert weiter - nur gescannte PDFs ohne eingebettete
+# Textebene können dann nicht gelesen werden (klare Fehlermeldung statt
+# Absturz, siehe io_utils/document_parsers._try_ocr_fallback).
+#
+# Zusätzlich zu diesen Python-Paketen wird SYSTEMSEITIG benötigt:
+#   - Tesseract OCR   (z. B. `apt install tesseract-ocr` / `brew install tesseract`
+#                       / Installer unter https://github.com/UB-Mannheim/tesseract/wiki für Windows)
+#   - Poppler-Utils   (z. B. `apt install poppler-utils` / `brew install poppler`
+#                       / Binaries unter https://github.com/oschwartz10612/poppler-windows für Windows)
+#
+# pytesseract>=0.3,<1.0
+# pdf2image>=1.17,<2.0

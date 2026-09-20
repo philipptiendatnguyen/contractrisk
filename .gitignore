@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+
+# Virtuelle Umgebung
+venv/
+.venv/
+env/
+
+# PyCharm
+.idea/
+
+# Projektspezifisch
+data/contractrisk.db
+contractrisk.log
+exports/
+
+# Betriebssystem
+.DS_Store
+Thumbs.db

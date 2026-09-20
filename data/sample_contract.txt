@@ -1,0 +1,86 @@
+SOFTWARE-NUTZUNGSVERTRAG
+
+zwischen der CloudSuite Solutions GmbH, Musterstraße 12, 10115 Berlin
+(im Folgenden "Anbieter" genannt)
+
+und
+
+der Musterfirma GmbH, Beispielweg 5, 80331 München
+(im Folgenden "Kunde" genannt)
+
+§ 1 Vertragsgegenstand
+
+Der Anbieter stellt dem Kunden eine cloudbasierte Software zur Verwaltung
+von Geschäftsprozessen ("CloudSuite Pro") zur Nutzung gegen Entgelt bereit.
+Der Funktionsumfang ergibt sich aus der aktuellen Leistungsbeschreibung in
+Anhang A.
+
+§ 2 Vertragslaufzeit und Kündigung
+
+(1) Der Vertrag beginnt am 01.01.2026 und läuft zunächst für eine
+Mindestvertragslaufzeit von 24 Monaten.
+
+(2) Nach Ablauf der Mindestvertragslaufzeit verlängert sich der Vertrag
+automatisch um jeweils weitere 12 Monate, sofern nicht gekündigt wird.
+Eine Kündigung ist mit einer Kündigungsfrist von drei Monaten zum Ende der
+jeweiligen Vertragslaufzeit möglich und muss schriftlich erfolgen.
+
+(3) Der Anbieter ist berechtigt, den Vertrag ohne Angabe von Gründen mit
+einer Frist von vier Wochen zum Monatsende außerordentlich zu kündigen.
+
+§ 3 Vergütung und Preisanpassung
+
+(1) Die monatliche Nutzungsgebühr beträgt 149,00 EUR zzgl. gesetzlicher
+Umsatzsteuer.
+
+(2) Der Anbieter behält sich vor, die Preise einseitig und ohne
+gesonderte Zustimmung des Kunden anzupassen, sofern sich die
+Betriebskosten des Anbieters erhöhen. Die Preisanpassung wird dem Kunden
+in Textform mitgeteilt und gilt als angenommen, wenn der Kunde nicht
+innerhalb von zwei Wochen widerspricht.
+
+§ 4 Haftung
+
+Die Haftung des Anbieters für mittelbare Schäden, entgangenen Gewinn
+sowie Datenverlust ist ausgeschlossen. Der Anbieter haftet nicht für
+Schäden, die durch unsachgemäße Nutzung der Software durch den Kunden
+entstehen.
+
+§ 5 Abtretung
+
+Der Anbieter ist berechtigt, sämtliche Rechte und Pflichten aus diesem
+Vertrag ohne Zustimmung des Kunden an ein verbundenes Unternehmen oder an
+Dritte zu übertragen. Der Kunde wird hierüber lediglich informiert.
+
+§ 6 Vertragsstrafe
+
+Verstößt der Kunde gegen die in § 7 geregelte Vertraulichkeitspflicht, so
+wird eine Vertragsstrafe in Höhe von 5.000 EUR je Verstoß fällig.
+
+§ 7 Vertraulichkeit
+
+Der Kunde verpflichtet sich, sämtliche im Rahmen der Vertragsdurchführung
+erlangten Informationen über den Anbieter vertraulich zu behandeln und
+Stillschweigen zu wahren. Der Anbieter unterliegt keiner entsprechenden
+Verpflichtung.
+
+§ 8 Datennutzung
+
+Der Anbieter räumt sich das Recht ein, anonymisierte Nutzungsdaten des
+Kunden auch zu Marketingzwecken sowie zur Weiterentwicklung eigener
+Produkte zu nutzen.
+
+§ 9 Gerichtsstand und anwendbares Recht
+
+Ausschließlicher Gerichtsstand für alle Streitigkeiten aus diesem Vertrag
+ist der Sitz des Anbieters. Es gilt deutsches Recht unter Ausschluss des
+UN-Kaufrechts.
+
+§ 10 Schlussbestimmungen
+
+Sollten einzelne Bestimmungen dieses Vertrags unwirksam sein, bleibt die
+Wirksamkeit der übrigen Bestimmungen hiervon unberührt.
+
+Berlin, den 15.12.2025
+
+CloudSuite Solutions GmbH                    Musterfirma GmbH
