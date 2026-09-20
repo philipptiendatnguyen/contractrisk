@@ -211,17 +211,3 @@ Dieses Projekt ist ein **technisches Demo- und Analyse-Tool** und stellt **keine
 ## Lizenz
 
 Veröffentlicht unter der [MIT-Lizenz](LICENSE).
-
----
-
-## LinkedIn-Post-Entwurf
-
-> **These:** Riskante Vertragsklauseln und Betrugsmuster – automatische Verlängerungen, versteckte Kosten, Vorschussbetrug, künstliche Dringlichkeit – werden im Alltag oft übersehen, weil niemand Zeit hat, jeden Vertrag oder jede verdächtige Nachricht Zeile für Zeile zu prüfen.
->
-> **Prozess:** Deshalb habe ich den **ContractRisk Scanner** gebaut: ein rein lokal laufendes Python-Tool, das Dokumente in gängigen Formaten (PDF, Word, Excel, PowerPoint, Text) anhand einer erweiterbaren Regelbibliothek scannt, Risiken UND Betrugsmuster erkennt, deren Konfidenz kontextbezogen bewertet (Verneinungen werden erkannt, nicht ignoriert) und – als Alleinstellungsmerkmal – eine **Fristen-Prognose** liefert: Kündigungsfristen und automatische Verlängerungen werden in konkrete Kalendertermine umgerechnet und als Zeitleiste visualisiert.
->
-> **Resultat:** Eine funktionierende Desktop-Anwendung mit sauberer Schichtenarchitektur, Multi-Format-Import, SQLite-Persistenz, Hintergrund-Threading und einem eigenen Regel-Editor – bewusst ganz ohne Cloud-KI, da Dokumente sensible Inhalte enthalten können.
->
-> Code & Doku auf GitHub: [Link einfügen]
->
-> #Python #LegalTech #SoftwareEngineering #Portfolio
